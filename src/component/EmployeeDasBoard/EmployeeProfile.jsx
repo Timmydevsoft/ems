@@ -18,7 +18,7 @@ const EmployeeProfile = () => {
     const getEmployee = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/employee/profile/${auth.id}`,
+          `https://employee-management-api-xi.vercel.app/api/employee/profile/${auth.id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -45,7 +45,7 @@ const EmployeeProfile = () => {
             <div>
               <img
                 className="rounded-full border w-72 h-72"
-                src={`http://localhost:3000/${employee.userId.profileImage}`}
+                src={`https://employee-management-api-xi.vercel.app/${employee.userId.profileImage}`}
                 alt=""
               />
             </div>

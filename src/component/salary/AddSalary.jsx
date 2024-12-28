@@ -21,7 +21,7 @@ const AddSalary = () => {
   const handleDepartment = async (e) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/employee/department/${e.target.value}`,
+        `https://employee-management-api-xi.vercel.app/api/employee/department/${e.target.value}`,
         {
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -50,7 +50,7 @@ const AddSalary = () => {
     const getDepartment = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/departments",
+          "https://employee-management-api-xi.vercel.app/api/departments",
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -91,7 +91,7 @@ const AddSalary = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/salary/add",
+        "https://employee-management-api-xi.vercel.app/api/salary/add",
         data,
         {
           headers: {

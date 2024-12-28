@@ -22,7 +22,7 @@ const EditEmployee = () => {
     const getEmployee = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/employee/${id}`,
+          `https://employee-management-api-xi.vercel.app/api/employee/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -51,7 +51,7 @@ const EditEmployee = () => {
     const getDepartment = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/departments",
+          "https://employee-management-api-xi.vercel.app/api/departments",
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -88,7 +88,7 @@ const EditEmployee = () => {
         }
   
       const response = await axios.put(
-        `http://localhost:3000/api/employee/edit/${id}`,
+        `https://employee-management-api-xi.vercel.app/api/employee/edit/${id}`,
         data,
         {
           headers: {

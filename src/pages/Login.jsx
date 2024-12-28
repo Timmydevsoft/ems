@@ -21,7 +21,7 @@ const Login = ()=>{
     const handleSubmit = async(e)=>{
         e.preventDefault()
         try{
-            const response = await axios.post("http://localhost:3000/api/login", user);
+            const response = await axios.post("https://employee-management-api-xi.vercel.app//api/login", user);
             if(response){
                 setAuth({token: response.data.accessToken, userName: response.data.name, role: response.data.role, id: response.data.id})
         
