@@ -11,7 +11,7 @@ const AdminSummary = ()=>{
         ()=>{
             const getSummary = async()=>{
                 try{
-                    const res = await axios.get("https://ems-api-plum.vercel.app/api/dashboard", 
+                    const res = await axios.get("https://ems-api-3nt7.onrender.com/api/dashboard", 
                         {
                             headers: {
                                 Authorization: `Bearer ${auth.token}`
@@ -54,7 +54,7 @@ const AdminSummary = ()=>{
                      <SummaryCard 
                         icon={<FaMoneyBillWave/>}
                         text="Monthly Salary"
-                        number={`$ ${summary.salaryTotal.length === 0 ? 0 : summary.salaryTotal[0].totalSalary}`}
+                        number={`$ ${summary?.salaryTotal?.length === 0 ? 0 : summary.salaryTotal[0].totalSalary}`}
                         color="bg-rose-600"
                     />
                 </div>

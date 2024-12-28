@@ -21,7 +21,7 @@ const AddSalary = () => {
   const handleDepartment = async (e) => {
     try {
       const response = await axios.get(
-        `https://ems-api-plum.vercel.app/api/employee/department/${e.target.value}`,
+        `https://ems-api-3nt7.onrender.com/api/employee/department/${e.target.value}`,
         {
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -50,7 +50,7 @@ const AddSalary = () => {
     const getDepartment = async () => {
       try {
         const response = await axios.get(
-          "https://ems-api-plum.vercel.app/api/departments",
+          "https://ems-api-3nt7.onrender.com/api/departments",
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -91,7 +91,7 @@ const AddSalary = () => {
 
     try {
       const res = await axios.post(
-        "https://employee-management-api-xi.vercel.app/api/salary/add",
+        "https://ems-api-3nt7.onrender.com/api/salary/add",
         data,
         {
           headers: {
@@ -112,7 +112,6 @@ const AddSalary = () => {
       {dep.length > 0 ? (
         <div className="max-w-4xl mx-auto  mt-10 bg-white p-8 rounded-md shadow-md">
           <h3 className="text-2xl font-bold mb-6">Add Salary</h3>
-
           <form onSubmit={handleSubmit}>
             {/* DEPARTMENT */}
             <div className="grid grid-cold-1 md:grid-cols-2 gap-4">

@@ -12,7 +12,7 @@ const AdminLeaveList = () => {
   useEffect(() => {
     const getLeaves = async () => {
       try {
-        const response = await axios.get("https://ems-api-plum.vercel.app/api/leave", {
+        const response = await axios.get("https://ems-api-3nt7.onrender.com/api/leave", {
           headers: {
             Authorization: `Bearer ${auth.token}`,
           },

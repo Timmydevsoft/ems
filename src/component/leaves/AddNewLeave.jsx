@@ -20,7 +20,7 @@ const AddNewLeave = ()=>{
         let formData = {...leave, userId}
         e.preventDefault()
         try{
-            const response = await axios.post("https://ems-api-plum.vercel.app/api/leave/add",formData,
+            const response = await axios.post("https://ems-api-3nt7.onrender.com/api/leave/add",formData,
                 {
                     headers:{
                         'Content-Type': 'application/json',

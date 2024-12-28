@@ -31,7 +31,7 @@ const AddEmployee = () => {
     const getDepartment = async () => {
       try {
         const response = await axios.get(
-          "https://ems-api-plum.vercel.app/api/departments",
+          "https://ems-api-3nt7.onrender.com/api/departments",
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -71,7 +71,7 @@ const AddEmployee = () => {
       //   formDataObj.append(key, formData[key]);
       // });
       const response = await axios.post(
-        "https://ems-api-plum.vercel.app/api/employee/add",
+        "https://ems-api-3nt7.onrender.com/api/employee/add",
         formDataToSend,
         {
           headers: {
