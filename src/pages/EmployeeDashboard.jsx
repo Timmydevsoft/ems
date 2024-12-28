@@ -1,17 +1,5 @@
-// import { useAuth } from "../context/authContext"
-
-// const EmployeeDashboard = ()=>{
-//     const{auth} = useAuth()
-//     return(
-//         <div className="">
-//             User name: {auth.userName}
-//         </div>
-//     )
-// }
-// export default EmployeeDashboard
-
 import { useState, useEffect } from "react"
-import { useAuth } from "../context/authContext"
+import { useAuth } from "../context/AuthContext"
 import { Outlet, useNavigate } from "react-router-dom"
 import axios from "axios"
 import NavBar from "../component/admin/NavBar"

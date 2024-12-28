@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { useAuth } from "../../context/authContext"
+import { useAuth } from "../../context/AuthContext"
 import DataTable from "react-data-table-component"
 import { columns, DepartmentButton } from "../../util/DepartmentHelper"
 import { useState } from "react"

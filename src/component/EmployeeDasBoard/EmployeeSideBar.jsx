@@ -1,6 +1,6 @@
 import { NavLink, Link} from "react-router-dom";
 import {FaBuilding, FaCalendarAlt, FaCogs, FaMoneyBillWave, FaTachometerAlt, FaUser, FaUsers} from "react-icons/fa"
-import { useAuth } from "../../context/authContext";
+import { useAuth } from "../../context/AuthContext";
 const EmployeeSideBar = () => {
     const{auth}= useAuth()
   return (
