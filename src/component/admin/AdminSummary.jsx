@@ -11,7 +11,7 @@ const AdminSummary = ()=>{
         ()=>{
             const getSummary = async()=>{
                 try{
-                    const res = await axios.get("https://employee-management-api-xi.vercel.app/api/dashboard", 
+                    const res = await axios.get("https://ems-api-plum.vercel.app/api/dashboard", 
                         {
                             headers: {
                                 Authorization: `Bearer ${auth.token}`

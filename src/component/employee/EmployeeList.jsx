@@ -30,7 +30,7 @@ const EmployeeList = () => {
       try {
         let s_no = 1;
         const response = await axios.get(
-          "https://employee-management-api-xi.vercel.app/api/employees",
+          "https://ems-api-plum.vercel.app/api/employees",
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -48,7 +48,7 @@ const EmployeeList = () => {
               <div className=" bg-slate-400 w-20 h-20 rounded-full">
                 <img
                   className="h-full w-full rounded-full"
-                  src={`https://employee-management-api-xi.vercel.app/${item.userId.profileImage}`}
+                  src={`https://ems-api-plum.vercel.app/${item.userId.profileImage}`}
                 />
               </div>
             ),

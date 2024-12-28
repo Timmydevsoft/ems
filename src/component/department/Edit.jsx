@@ -13,7 +13,7 @@ const Edit = () => {
     const getDeTtails = async () => {
       try {
         const response = await axios.get(
-          `https://employee-management-api-xi.vercel.app/api/department/${id}`,
+          `https://ems-api-plum.vercel.app/api/department/${id}`,
           {
             headers: {
               'Authorization': `Bearer ${auth.token}`,
@@ -38,7 +38,7 @@ const Edit = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try{
-      const res = await axios.put(`https://employee-management-api-xi.vercel.app/api/departments/${id}`,
+      const res = await axios.put(`https://ems-api-plum.vercel.app/api/departments/${id}`,
          dep,
          {
           headers:{

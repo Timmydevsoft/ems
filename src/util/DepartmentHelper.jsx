@@ -25,7 +25,7 @@ export const DepartmentButton = ({ id, handleSorting }) => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `https://employee-management-api-xi.vercel.app/departments/${id}`,
+        `https://ems-api-plum.vercel.app/api/departments/${id}`,
         {
           headers: {
             Authorization: `Bearer ${auth.token}`,
