@@ -18,7 +18,7 @@ const EmployeeProfile = () => {
     const getEmployee = async () => {
       try {
         const response = await axios.get(
-          `https://employee-management-api-xi.vercel.app/api/employee/profile/${auth.id}`,
+          `https://ems-api-plum.vercel.app/api/employee/profile/${auth.id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,

@@ -18,7 +18,7 @@ const Setting = () => {
       try {
         let id = auth.id;
         const response = await axios.put(
-          "https://employee-management-api-xi.vercel.app/api/settings",
+          "https://ems-api-plum.vercel.app/api/settings",
           { ...settingsData, id },
           {
             headers: {

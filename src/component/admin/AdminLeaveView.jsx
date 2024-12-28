@@ -14,7 +14,7 @@ const AdminLeaveView = () => {
     const getLeaveList = async () => {
       try {
         const response = await axios.get(
-          `https://employee-management-api-xi.vercel.app/leave/${id}`,
+          `https://ems-api-plum.vercel.app/api/leave/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -33,7 +33,7 @@ const AdminLeaveView = () => {
   const navigate = useNavigate()
   const changeStatus = async(id, status)=>{
     try{
-      const response = await axios.put(`https://employee-management-api-xi.vercel.app/leave/${id}`, {status}, 
+      const response = await axios.put(`https://ems-api-plum.vercel.app/api/leave/${id}`, {status}, 
        {
         headers:{
           Authorization: `Bearer ${auth.token}`
@@ -70,7 +70,7 @@ const AdminLeaveView = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  <div>
                   <img 
-                       src={`https://employee-management-api-xi.vercel.app/${leaves.employeeId.userId.profileImage}`}
+                       src={`https://ems-api-plum.vercel.app/${leaves.employeeId.userId.profileImage}`}
                        alt=""
                        className="rounded-full w-72 h-72 border"
                     />

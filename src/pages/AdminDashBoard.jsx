@@ -15,7 +15,7 @@ const AdminDashBoard = ()=>{
             const veryfyUser = async()=>{
                 try{
                     let status;
-                    const response = await axios.get("http://localhost:3000/api/verify",
+                    const response = await axios.get("https://ems-api-plum.vercel.app/api/verify",
                         {
                             headers:{
                                 "Content-Type": "application/json",
