@@ -2,7 +2,7 @@ import { FaBuilding, FaCheckCircle, FaFileAlt, FaHourglassHalf, FaMoneyBillWave,
 import SummaryCard from "./SummaryCard"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { useAuth } from "../../context/authContext"
+import { useAuth } from "../../context/AuthContext"
 
 const AdminSummary = ()=>{
     const{auth} = useAuth()
