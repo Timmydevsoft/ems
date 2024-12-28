@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import axiosPublic from "../api/axios"
 import { useNavigate,Link, useLocation } from "react-router-dom"
-import { useAuth } from "../context/authContext"
+import { useAuth } from "../context/AuthContext"
 const Login = ()=>{
     const[user,setUser] = useState({mail: "", password:""})
 
