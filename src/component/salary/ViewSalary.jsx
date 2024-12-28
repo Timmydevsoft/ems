@@ -11,7 +11,7 @@ const ViewSalary = () => {
     const getSalary = async () => {
       try {
         const salaryResponse = await axios.get(
-          `http://localhost:3000/api/salary/${id}`,
+          `https://employee-management-api-xi.vercel.app/api/salary/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,

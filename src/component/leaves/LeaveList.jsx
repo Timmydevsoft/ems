@@ -12,7 +12,7 @@ const LeaveList = () => {
     const getLeaveList = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/employee/leave/${id}`,
+          `https://employee-management-api-xi.vercel.app/api/employee/leave/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,

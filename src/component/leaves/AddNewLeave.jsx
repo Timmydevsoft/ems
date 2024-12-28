@@ -20,7 +20,7 @@ const AddNewLeave = ()=>{
         let formData = {...leave, userId}
         e.preventDefault()
         try{
-            const response = await axios.post("http://localhost:3000/api/leave/add",formData,
+            const response = await axios.post("https://employee-management-api-xi.vercel.app/api/leave/add",formData,
                 {
                     headers:{
                         'Content-Type': 'application/json',
