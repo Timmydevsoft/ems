@@ -22,7 +22,7 @@ const EditEmployee = () => {
     const getEmployee = async () => {
       try {
         const response = await axios.get(
-          `https://ems-api-plum.vercel.app/api/employee/${id}`,
+          `https://ems-api-3nt7.onrender.com/api/employee/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -51,7 +51,7 @@ const EditEmployee = () => {
     const getDepartment = async () => {
       try {
         const response = await axios.get(
-          "https://ems-api-plum.vercel.app/api/departments",
+          "https://ems-api-3nt7.onrender.com/api/departments",
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -88,7 +88,7 @@ const EditEmployee = () => {
         }
   
       const response = await axios.put(
-        `https://ems-api-plum.vercel.app/api/employee/edit/${id}`,
+        `https://ems-api-3nt7.onrender.com/api/employee/edit/${id}`,
         data,
         {
           headers: {

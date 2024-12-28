@@ -21,7 +21,7 @@ const Login = ()=>{
     const handleSubmit = async(e)=>{
         e.preventDefault()
         try{
-            const response = await axios.post("https://ems-api-plum.vercel.app/api/login", user);
+            const response = await axios.post("https://ems-api-3nt7.onrender.com/api/login", user);
             if(response){
                 setAuth({token: response.data.accessToken, userName: response.data.name, role: response.data.role, id: response.data.id})
         

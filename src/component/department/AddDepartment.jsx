@@ -17,7 +17,7 @@ const AddDepartment =()=>{
     const handleSubmit = async(e)=>{
         e.preventDefault()
         try{
-            const response = await axios.post("https://ems-api-plum.vercel.app/api/department/add", department,{
+            const response = await axios.post("https://ems-api-3nt7.onrender.com/api/department/add", department,{
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${auth.token}`

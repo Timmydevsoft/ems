@@ -19,7 +19,7 @@ const View = () => {
     const getEmployee = async () => {
       try {
         const response = await axios.get(
-          `https://ems-api-plum.vercel.app/api/employee/${id}`,
+          `https://ems-api-3nt7.onrender.com/api/employee/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -46,7 +46,7 @@ const View = () => {
             <div>
               <img
                 className="rounded-full border w-72 h-72"
-                src={`https://ems-api-plum.vercel.app/${employee.userId.profileImage}`}
+                src={`https://ems-api-3nt7.onrender.com/${employee.userId.profileImage}`}
                 alt=""
               />
             </div>

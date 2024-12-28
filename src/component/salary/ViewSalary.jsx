@@ -11,7 +11,7 @@ const ViewSalary = () => {
     const getSalary = async () => {
       try {
         const salaryResponse = await axios.get(
-          `https://ems-api-plum.vercel.app/api/salary/${id}`,
+          `https://ems-api-3nt7.onrender.com/api/salary/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
