@@ -4,8 +4,6 @@ import { Outlet, useNavigate } from "react-router-dom"
 import axios from "axios"
 import AdminSideBar from "../component/admin/AminSideBar"
 import NavBar from "../component/admin/NavBar"
-import AdminSummary from "../component/admin/AdminSummary"
-import Loading from "../component/uiexperience/Loading"
 
 const AdminDashBoard = ()=>{
     const{auth} = useAuth()
