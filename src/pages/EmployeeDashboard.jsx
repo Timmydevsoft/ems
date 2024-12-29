@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext"
 import { Outlet, useNavigate } from "react-router-dom"
 import axios from "axios"
 import NavBar from "../component/admin/NavBar"
-import AdminSummary from "../component/admin/AdminSummary"
+import ProgressBar from "../component/uiexperience/ProgressBar"
 import EmployeeSideBar from "../component/EmployeeDasBoard/EmployeeSideBar"
 
 const EmployeeDashboard = ()=>{
@@ -40,7 +40,10 @@ const EmployeeDashboard = ()=>{
     )
     if(loading){
         return(
-            <div className="text-teal-600 font-medium text-3xl"> Loading....</div>
+            <div className="w-full h-screen p-10 flex items-center justify-center flex-col space-y-4">
+                <p className="text-2xl text-teal-600 ">Loading ......</p>
+                <ProgressBar/>
+            </div>
         )
     }
     return(
