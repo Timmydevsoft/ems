@@ -12,7 +12,7 @@ const LeaveList = () => {
     const getLeaveList = async () => {
       try {
         const response = await axios.get(
-          `https://ems-api-plum.vercel.app/api/employee/leave/${id}`,
+          `https://ems-api-3nt7.onrender.com/api/employee/leave/${id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
