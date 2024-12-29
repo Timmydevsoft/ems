@@ -3,9 +3,11 @@ import SummaryCard from "./SummaryCard"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useAuth } from "../../context/AuthContext"
+import ProgressBar from "../uiexperience/ProgressBar"
 
 const AdminSummary = ()=>{
     const{auth} = useAuth()
+    const[loading,setLoading]=useState(true)
     const[summary, setSummary]= useState(null)
     useEffect(
         ()=>{
@@ -19,10 +21,10 @@ const AdminSummary = ()=>{
                         }
                     )
                     setSummary(res.data)
+                    setLoading(false)
                 }
                 catch(err){
                     alert(err.message)
-                    console.log(err)
                 }
             }
             getSummary()
@@ -31,8 +33,12 @@ const AdminSummary = ()=>{
     return(
        <>
         {
-            summary === null ?
-            (<div className="text-2xl text-teal-600 ">Loading ......</div>):
+            summary === null && loading ?
+            (<div className="w-full h-screen p-10 flex items-center justify-center flex-col space-y-4">
+                <p className="text-2xl text-teal-600 ">Loading ...</p>
+                <ProgressBar/>
+            </div>
+            ):
             (
                 <div className="p-6">
                 <h3 className="text-2xl font-bold">Dashboard Overview</h3>
