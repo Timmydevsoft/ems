@@ -4,8 +4,6 @@ import { Outlet, useNavigate } from "react-router-dom"
 import axios from "axios"
 import AdminSideBar from "../component/admin/AminSideBar"
 import NavBar from "../component/admin/NavBar"
-import AdminSummary from "../component/admin/AdminSummary"
-import Loading from "../component/uiexperience/Loading"
 
 const AdminDashBoard = ()=>{
     const{auth} = useAuth()
@@ -38,17 +36,17 @@ const AdminDashBoard = ()=>{
         },
         []
     )
-    if(loading){
-        return(
-            <div className="w-full h-screen flex items-center justify-center">
-                <Loading/>
-            </div>
-        )
-    }
+    // if(loading){
+    //     return(
+    //         <div className="w-full h-screen flex items-center justify-center">
+    //             <Loading/>
+    //         </div>
+    //     )
+    // }
     return(
-        <div className="flex overflow-y-hidden">
+        <div className="flex overflow-y-hidden relative">
             <AdminSideBar/>
-            <div className="flex flex-col flex-1 h-screen ml-64 bg-gray-100 overflow-y-hidden">
+            <div className="w-full flex flex-col lg:flex-1 h-screen lg:ml-64 bg-gray-100 overflow-y-hidden">
                <NavBar/>
               <div className="overflow-y-auto">
                  <Outlet />

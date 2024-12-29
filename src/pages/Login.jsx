@@ -37,11 +37,11 @@ const Login = () => {
             /*if(response){
                 navigate(from, {replace: true});
             }*/
-            if(auth.token  !=="" && response.data.role === "admin"){
+            if(response.data.accessToken && response.data.role === "admin"){
                 setLoading(false)
                 navigate("/admin-dashboard")
             }
-            else if(auth.token !=="" && response.data.role === "Employee"){
+            else if(response.data.accessToken && response.data.role === "Employee"){
                 setLoading(false)
                 navigate("/employee-dashboard")
             }
@@ -62,8 +62,8 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-teal-600 from-50% to-gray-100 to-50% space-y-6">
-      <h2 className="text-3xl text-white Sevillana">
+    <div className="flex p-6 lg:p-0 flex-col items-center justify-center h-screen bg-gradient-to-b from-teal-600 from-50% to-gray-100 to-50% space-y-6">
+      <h2 className="text-3xl text-white Sevillana text-center">
         Employee Management System
       </h2>
       <div className="border shadow p-6 w-80 bg-white">
