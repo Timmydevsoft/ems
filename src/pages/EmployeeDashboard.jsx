@@ -47,9 +47,9 @@ const EmployeeDashboard = ()=>{
         )
     }
     return(
-        <div className="flex overflow-y-hidden">
+        <div className="flex overflow-y-hidden relative">
             <EmployeeSideBar/>
-            <div className="flex flex-col flex-1 h-screen ml-64 bg-gray-100 overflow-y-hidden">
+            <div className="w-full flex flex-col lg:flex-1 h-screen lg:ml-64 bg-gray-100 overflow-y-hidden">
                <NavBar/>
               <div className="overflow-y-auto">
                  <Outlet />
