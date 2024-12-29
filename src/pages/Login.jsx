@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../index.css";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -6,9 +6,15 @@ import { useAuth } from "../context/AuthContext";
 import Loading from "../component/uiexperience/Loading";
 const Login = () => {
   const [user, setUser] = useState({ mail: "", password: "" });
+  const inputRef = useRef()
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ status: 200, message: "" });
   const { setAuth, auth } = useAuth();
+  useEffect(
+    ()=>{
+        inputRef.current.focus()
+    },[]
+  )
   const handleChange = (e) => {
     const { name, value } = e.target;
     setError({ status: 200, message: "" });
@@ -21,8 +27,8 @@ const Login = () => {
   const from = location?.state?.from?.pathname || "/";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
     try{
+        setLoading(true)
         const response = await axios.post("https://ems-api-3nt7.onrender.com/api/login", user);
         if(response){
             setAuth({token: response.data.accessToken, userName: response.data.name, role: response.data.role, id: response.data.id})
@@ -36,13 +42,14 @@ const Login = () => {
                 navigate("/admin-dashboard")
             }
             else if(auth.token !=="" && response.data.role === "Employee"){
-                navigate("/admin-dashboard")
+                setLoading(false)
                 navigate("/employee-dashboard")
             }
         }
     }
     catch(err){
         if(err.status === 401){
+            setLoading(false)
             setError(prev=>{
                 return({...prev, status:401, message: "Invalid or wrong password"})
             })
@@ -73,10 +80,11 @@ const Login = () => {
               type="email"
               required
               name="mail"
+              ref={inputRef}
               placeholder="Enter your mail"
               value={user.mail}
               onChange={handleChange}
-              className="px-3 py-2 w-full border"
+              className="px-3 py-2 w-full border focus:outline-teal-400"
             />
           </div>
           <div className="mb-4">
@@ -90,7 +98,7 @@ const Login = () => {
               placeholder="******"
               value={user.password}
               onChange={(e) => handleChange(e)}
-              className="px-3 py-2 w-full border"
+              className="px-3 py-2 w-full border focus:outline-teal-400"
             />
           </div>
           <div className="flex items-ceter w-full justify-center mb-4">

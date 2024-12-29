@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 
 const EmployeeProfile = () => {
 //   const { id } = useParams();
+const[loading,setLoading] = useState(true)
   const { auth } = useAuth();
   const [employee, setEmployee] = useState(null);
   const formatDate = (datestring) => {
