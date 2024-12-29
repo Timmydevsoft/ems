@@ -37,11 +37,11 @@ const Login = () => {
             /*if(response){
                 navigate(from, {replace: true});
             }*/
-            if(auth.token  !=="" && response.data.role === "admin"){
+            if(response.data.accessToken && response.data.role === "admin"){
                 setLoading(false)
                 navigate("/admin-dashboard")
             }
-            else if(auth.token !=="" && response.data.role === "Employee"){
+            else if(response.data.accessToken && response.data.role === "Employee"){
                 setLoading(false)
                 navigate("/employee-dashboard")
             }

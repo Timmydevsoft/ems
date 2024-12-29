@@ -1,15 +1,9 @@
 import { createContext,useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-// import {  } from "react";
-const AuthContext = createContext({token: "", userName:"", role: "", id:""})
+const AuthContext = createContext({token: "", userName:"", role: "", id:"", menu:false})
 
 const AuthProvider = ({children})=>{
-    const[auth, setAuth] = useState({token: "", userName:"", role: "", id:""})
+    const[auth, setAuth] = useState({token: "", userName:"", role: "", id:"",menu: false})
     
-
-    const login = ()=>{
-
-    }
 
     const logOut = ()=>{
         setAuth("")
