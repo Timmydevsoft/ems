@@ -30,7 +30,7 @@ const EmployeeDashboard = ()=>{
                     
                 }
                 catch(err){
-                    console.log(err)
+                    alert(err.message)
                     navigate("/login")
                 }
             }

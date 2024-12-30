@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import ProgressBar from "../uiexperience/ProgressBar";
 
 const EmployeeProfile = () => {
-//   const { id } = useParams();
-const[loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const { auth } = useAuth();
   const [employee, setEmployee] = useState(null);
   const formatDate = (datestring) => {
@@ -28,6 +28,7 @@ const[loading,setLoading] = useState(true)
         );
         if (response.status === 200) {
           setEmployee(response.data);
+          setLoading(false)
         }
       } catch (err) {
         console.log(err);
@@ -35,6 +36,15 @@ const[loading,setLoading] = useState(true)
     };
     getEmployee();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen p-10 flex items-center justify-center flex-col space-y-4">
+        <p className="text-2xl text-teal-600 ">Loading ...</p>
+        <ProgressBar />
+      </div>
+    );
+  }
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       {employee !== null ? (
@@ -42,7 +52,7 @@ const[loading,setLoading] = useState(true)
           <h2 className="text-2xl font-bold  mb-8 text-center">
             Employee Details
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className=" flex flex-col items-center lg:grid lg:grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <img
                 className="rounded-full border w-72 h-72"

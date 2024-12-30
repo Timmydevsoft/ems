@@ -2,14 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
-
+import ProgressBar from "../uiexperience/ProgressBar";
 const AddSalary = () => {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [dep, setDep] = useState([]);
   const [empError, setEmpError] = useState(false);
   const [salaryForm, setSalaryForm] = useState({
-  
     id: "",
     basicSalary: 0,
     allowance: 0,
@@ -68,8 +67,6 @@ const AddSalary = () => {
     getDepartment();
   }, []);
 
- 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSalaryForm((prev) => {
@@ -80,14 +77,16 @@ const AddSalary = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(salaryForm);
-    const selected = employee.filter((item)=> item.employeeId === salaryForm.id)[0]._id
-    let data= {
+    const selected = employee.filter(
+      (item) => item.employeeId === salaryForm.id
+    )[0]._id;
+    let data = {
       employeeId: selected,
       basicSalary: salaryForm.basicSalary,
       allowances: salaryForm.allowance,
       deduction: salaryForm.deduction,
-      payDate: salaryForm.payDate
-    }
+      payDate: salaryForm.payDate,
+    };
 
     try {
       const res = await axios.post(
@@ -101,21 +100,21 @@ const AddSalary = () => {
         }
       );
       if (res.status === 201) {
-           navigate("/admin-dashboard/employees")
-        }
+        navigate("/admin-dashboard/employees");
+      }
     } catch (err) {
-      console.log(err);
+      alert(err.message)
     }
   };
   return (
     <>
       {dep.length > 0 ? (
         <div className="max-w-4xl mx-auto  mt-10 bg-white p-8 rounded-md shadow-md">
-          <h3 className="text-2xl font-bold mb-6">Add Salary</h3>
+          <h3 className="text-center lg:text-left text-2xl font-bold mb-6">Add Salary</h3>
           <form onSubmit={handleSubmit}>
             {/* DEPARTMENT */}
-            <div className="grid grid-cold-1 md:grid-cols-2 gap-4">
-              <div className="mt-4">
+            <div className="flex flex-col items-center lg:grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="mt-4 w-full">
                 <label
                   className="text-sm font-medium text-gray-700"
                   htmlFor="department"
@@ -124,7 +123,7 @@ const AddSalary = () => {
                   <span className="text-rose-500 font-bold text-xl">*</span>
                 </label>
                 <select
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 w-full border border-gray focus:outline-teal-500-300 rounded-md"
                   name="department_name"
                   required
                   onChange={handleDepartment}
@@ -141,7 +140,7 @@ const AddSalary = () => {
               </div>
 
               {/* Employee */}
-              <div className="mt-4">
+              <div className="mt-4 w-full">
                 <label
                   className="text-sm font-medium text-gray-700"
                   htmlFor="id"
@@ -155,7 +154,7 @@ const AddSalary = () => {
                   </span>
                 ) : null}
                 <select
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 focus:outline-teal-500 w-full border border-gray-300 rounded-md"
                   name="id"
                   required
                   //   onClick={handleEmployee}
@@ -172,7 +171,7 @@ const AddSalary = () => {
               </div>
 
               {/* Basic Salary secetion */}
-              <div className="mt-4">
+              <div className="mt-4 w-full">
                 <label
                   className="text-sm font-medium text-gray-700"
                   htmlFor="dep_name"
@@ -187,12 +186,12 @@ const AddSalary = () => {
                   placeholder="Basic Salary"
                   onChange={handleChange}
                   required
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 w-full border focus:outline-teal-500 border-gray-300 rounded-md"
                 />
               </div>
 
               {/* Allowances */}
-              <div className="mt-4">
+              <div className="mt-4 w-full">
                 <label
                   className="text-sm font-medium text-gray-700"
                   htmlFor="dep_name"
@@ -207,11 +206,11 @@ const AddSalary = () => {
                   value={salaryForm.allowances}
                   onChange={handleChange}
                   required
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 focus:outline-teal-500 w-full border border-gray-300 rounded-md"
                 />
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 w-full">
                 <label
                   className="text-sm font-medium text-gray-700"
                   htmlFor="designation"
@@ -226,11 +225,11 @@ const AddSalary = () => {
                   placeholder="Deduction"
                   onChange={handleChange}
                   required
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 focus:outline-teal-500 w-full border border-gray-300 rounded-md"
                 />
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 w-full">
                 <label
                   className="text-sm font-medium text-gray-700"
                   htmlFor="paydate"
@@ -245,7 +244,7 @@ const AddSalary = () => {
                   placeholder="PayDate"
                   onChange={handleChange}
                   required
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 focus:outline-teal-500 w-full border border-gray-300 rounded-md"
                 />
               </div>
 
@@ -255,7 +254,12 @@ const AddSalary = () => {
             </div>
           </form>
         </div>
-      ) : (<div className="text-2xl text-teal-600 font-semibold">Loading....</div>)}
+      ) : (
+        <div className="w-full h-screen p-10 flex items-center justify-center flex-col space-y-4">
+          <p className="text-2xl text-teal-600 ">Loading ...</p>
+          <ProgressBar />
+        </div>
+      )}
     </>
   );
 };

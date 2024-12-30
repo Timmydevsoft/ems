@@ -38,15 +38,15 @@ const AdminSummary = () => {
   }, []);
   return (
     <>
-      {summary === null && loading ? (
+      {summary !== null && !loading ? (
         <div className="w-full h-screen p-10 flex items-center justify-center flex-col space-y-4">
           <p className="text-2xl text-teal-600 ">Loading ...</p>
           <ProgressBar />
         </div>
       ) : (
-        <div className="p-6 lg:block flex flex-col items-center">
+        <div className="p-6 lg:block flex flex-col items-center w-full lg:auto">
           <h3 className="text-2xl font-bold text-center w-full ">Dashboard Overview</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 w-full">
             <SummaryCard
               icon={<FaUsers />}
               text="Total Employees"
@@ -73,7 +73,7 @@ const AdminSummary = () => {
             />
           </div>
 
-          <div className="mt-12">
+          <div className="mt-12 w-full lg:w-auto">
             <h4 className="text-2xl text-center font-bold">Leave Details</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-6 gap-6">
               <SummaryCard

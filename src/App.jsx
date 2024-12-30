@@ -28,7 +28,7 @@ function App() {
          <Route path="/" element={<Navigate to="/admin-dashboard"/>} />
         <Route path="/login" element={<Login/>} />
         <Route element={<RequiredAuth />}>
-          <Route path="/admin-dashboard" element={<AdminDashBoard />}>
+          <Route path="/admin-dashboard" element={<AdminDashBoard />}> 
             <Route index element={<AdminSummary/>}></Route>
             <Route path="/admin-dashboard/departments" element={<DepartmentList/>}></Route>
             <Route path="/admin-dashboard/add-department" element={<AddDepartment/>}></Route>
@@ -43,7 +43,6 @@ function App() {
             <Route path="/admin-dashboard/leave/:id" element={<AdminLeaveView/>}></Route>
             <Route path="/admin-dashboard/employees/leave/:id" element={<LeaveList/>}></Route>
             <Route path="/admin-dashboard/setting" element={<Setting/>}></Route>
-    
           </Route>
           {/* */}
           <Route path="/employee-dashboard" element={<EmployeeDashboard />} >

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useAuth } from "../../context/AuthContext"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
@@ -14,6 +14,13 @@ const AddNewLeave = ()=>{
        })
 
     }
+
+    const inputRef = useRef()
+    useEffect(
+        ()=>{
+            inputRef.current.focus()
+        }
+    )
 
     const handleSubmit = async(e)=>{
         let userId = auth.id
@@ -40,7 +47,7 @@ const AddNewLeave = ()=>{
     }
     return(
         <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
-            <h2 className="text-2xl font-bold mb-6">Request for leave</h2>
+            <h2 className="text-2xl text-center lg:text-left font-bold mb-6">Request for leave</h2>
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <div className="flex flex-col space-y-4">
                     <div>
@@ -48,9 +55,10 @@ const AddNewLeave = ()=>{
                         <select 
                             type="text" 
                             name="leaveType"
+                            ref={inputRef}
                             // value={leave.leaveType}
                             onChange={handleChange}
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                            className="mt-1 p-2 w-full border focus:outline-teal-500 border-gray-300 rounded-md"
                             required
                         >
                             <option value="">Selecte Leave Type</option>
@@ -70,7 +78,7 @@ const AddNewLeave = ()=>{
                                 name="startDate"
                                 // value={leave.startDate}
                                 onChange={handleChange}
-                                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                                className="mt-1 focus:outline-teal-500 p-2 block w-full border border-gray-300 rounded-md"
                                 required
                             />
                         </div>
@@ -82,7 +90,7 @@ const AddNewLeave = ()=>{
                                 name="endDate"
                                 // value={leave.endDate}
                                 onChange={handleChange}
-                                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                                className="mt-1 focus:outline-teal-500 p-2 block w-full border border-gray-300 rounded-md"
                                 required
                             />
                         </div>
@@ -93,7 +101,7 @@ const AddNewLeave = ()=>{
                                 name="reason"
                                 placeholder="Reason"
                                 onChange={handleChange}
-                                className="w-full border p-1 border-gray-300 rounded-md"
+                                className="w-full border focus:outline-teal-500 p-1 border-gray-300 rounded-md"
                                 required
                             >
                             </textarea>
