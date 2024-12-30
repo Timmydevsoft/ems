@@ -33,19 +33,21 @@ const LeaveList = () => {
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Leaves</h3>
       </div>
-      <div className="flex items-center justify-between">
+      <div className=" flex flex-col-reverse gap-3 lg:flex-row items-center lg:justify-between">
         <input
           type="text"
           placeholder="Search By Status"
-          className="px-4 py-2 font-semibold border rounded"
+          className="px-4 py-2 font-semibold border rounded w-full lg:w-auto"
         />
         {auth.role === "Employee" && (
-          <NavLink
+          <div className="w-full flex justify-end lg:block">
+            <NavLink
             to="/employee-dashboard/add-leave"
             className="px-4 font-semibold py-2 rounded bg-teal-600 text-white"
           >
             Add New Leave
           </NavLink>
+          </div>
         )}
       </div>
 

@@ -21,6 +21,7 @@ const ViewSalary = () => {
         );
         if (salaryResponse.status === 200 && salaryResponse.data.length > 0) {
           setSalaries(salaryResponse.data);
+          setLoading(false)
         }
       } catch (err) {
         console.log(err);
