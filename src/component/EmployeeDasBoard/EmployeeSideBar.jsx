@@ -2,13 +2,8 @@ import { NavLink, Link} from "react-router-dom";
 import {FaBuilding, FaCalendarAlt, FaCogs, FaMoneyBillWave, FaTachometerAlt, FaUser, FaUsers} from "react-icons/fa"
 import { useAuth } from "../../context/AuthContext";
 const EmployeeSideBar = () => {
-    const{auth, setAuth}= useAuth()
-    const handleMenu = ()=>{
-        setAuth((prev)=>{
-            return({prev, menu:!auth.menu})
-        })
-    }
-
+    const{auth, handleMenu}= useAuth()
+    
   return (
     <div className={`absolute ${auth.menu ? 'left-0':'-left-72'}  bg-gray-800 text-white lg:fixed h-screen lg:left-0 top-0 bottom-0 space-y-2 w-64`}>
       <div className="flex items-center justify-center bg-teal-600 h-12">

@@ -2,13 +2,9 @@ import { useAuth } from "../../context/AuthContext";
 import hamburger from "../../assets/icon-menu.svg";
 import { useState } from "react";
 const NavBar = () => {
-  const { auth, logOut, setAuth } = useAuth();
+  const { auth, logOut, handleMenu } = useAuth();
 
-  const handleMenu = () => {
-   setAuth((prev)=>{
-    return({...prev, menu: !auth.menu})
-   })
-  };
+  
   const[showLogout, setShowLogout]=useState(false)
   return (
     <div className="flex items-center text-white justify-between h-12 bg-teal-600 px-5">
