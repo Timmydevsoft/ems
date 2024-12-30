@@ -47,7 +47,6 @@ const AdminLeaveView = () => {
         return navigate("/admin-dashboard/leaves");
       }
     } catch (err) {
-      console.log(err.message);
       alert(err);
     }
   };
