@@ -38,7 +38,7 @@ const AdminSummary = () => {
   }, []);
   return (
     <>
-      {summary !== null && !loading ? (
+      {summary !== null && loading ? (
         <div className="w-full h-screen p-10 flex items-center justify-center flex-col space-y-4">
           <p className="text-2xl text-teal-600 ">Loading ...</p>
           <ProgressBar />
