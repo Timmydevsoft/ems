@@ -24,7 +24,7 @@ const ViewSalary = () => {
           setLoading(false)
         }
       } catch (err) {
-        console.log(err);
+        alert(err.message)
       }
     };
     getSalary();

@@ -29,7 +29,7 @@ const AdminDashBoard = ()=>{
                     }
                 }
                 catch(err){
-                    console.log(err)
+                    alert(err.nessage)
                     navigate("/login")
                 }
             }
