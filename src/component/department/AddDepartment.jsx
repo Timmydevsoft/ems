@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 
@@ -7,6 +7,13 @@ import { useNavigate } from "react-router-dom"
 const AddDepartment =()=>{
     const{auth}= useAuth()
     const navigate = useNavigate()
+    const inputRef= useRef()
+    useEffect(
+        ()=>{
+            inputRef.current.focus()
+        },
+        []
+    )
     const[department, setDepartment] = useState({dep_name: "", description: ""})
     const handleChange = (e)=>{
         const{name, value} = e.target
@@ -46,10 +53,11 @@ const AddDepartment =()=>{
                     <input 
                         type="text"
                         name="dep_name"
+                        ref= { inputRef}
                         placeholder="Enter Dep Name"
                         onChange={handleChange}
                         required 
-                        className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                        className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
                     />
                        
                 </div>
@@ -59,7 +67,7 @@ const AddDepartment =()=>{
                         name="description"
                         placeholder="Add Description"
                         onChange={handleChange}
-                        className="block mt-1 p-2 w-full border border-gray-300 rounded-md"
+                        className="block mt-1 p-2 focus:outline-teal-500  w-full border border-gray-300 rounded-md"
                         rows="4"
                         required
                         ></textarea>

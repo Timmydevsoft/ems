@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,12 @@ const Setting = () => {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [settingsData, setSettingsData] = useState();
+  const inputRef = useRef()
+  useEffect(
+    ()=>{
+      inputRef.current.focus()
+    }
+  )
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (settingsData.newPassword !== settingsData.confirmPassword) {
@@ -68,8 +74,9 @@ const Setting = () => {
           <input
             type="password"
             name="oldPassword"
+            ref={inputRef}
             placeholder="Change Password"
-            className="w-full mt-1 p-2 border rounded-md"
+            className="w-full mt-1 p-2 border rounded-md focus:outline-teal-500"
             required
             onChange={(e) => handleChange(e)}
           />
@@ -83,7 +90,7 @@ const Setting = () => {
             type="password"
             name="newPassword"
             placeholder="Change Password"
-            className="w-full mt-1 p-2 border rounded-md"
+            className="w-full mt-1 p-2 border rounded-md focus:outline-teal-500"
             required
             onChange={(e) => handleChange(e)}
           />
@@ -97,7 +104,7 @@ const Setting = () => {
             type="password"
             name="confirmPassword"
             placeholder="Change Password"
-            className="w-full mt-1 p-2 border rounded-md"
+            className="w-full mt-1 p-2 border rounded-md focus:outline-teal-500"
             required
             onChange={(e) => handleChange(e)}
           />

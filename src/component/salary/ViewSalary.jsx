@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import Loading from "../uiexperience/Loading";
 const ViewSalary = () => {
   const [salaries, setSalaries] = useState([]);
   const { auth } = useAuth();
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   useEffect(() => {
     const getSalary = async () => {
@@ -18,10 +19,9 @@ const ViewSalary = () => {
             },
           }
         );
-        if (salaryResponse.status === 200  && salaryResponse.data.length > 0) {
+        if (salaryResponse.status === 200 && salaryResponse.data.length > 0) {
           setSalaries(salaryResponse.data);
         }
-       
       } catch (err) {
         console.log(err);
       }
@@ -41,6 +41,13 @@ const ViewSalary = () => {
       return false;
     }
   };
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div className="overflow-x-auto  p-5">
       <div className="text-center">
@@ -64,7 +71,7 @@ const ViewSalary = () => {
               "Allowance",
               "Deduction",
               "Total",
-              "Pay Date"
+              "Pay Date",
             ].map((item) => {
               return (
                 <th key={item} className="px-6 py-3">

@@ -5,7 +5,7 @@ const AdminSideBar = () => {
     const{auth, handleMenu}=useAuth()
    
   return (
-    <div className={`absolute ${auth.menu ? 'left-0':'-left-72'}  bg-gray-800 text-white lg:fixed h-screen lg:left-0 top-0 bottom-0 space-y-2 w-64`}>
+    <div className={`absolute ${auth.menu ? 'left-0':'-left-72'}  bg-gray-800 text-white lg:fixed h-screen lg:left-0 top-0 bottom-0 space-y-2 w-64 z-50`}>
       <div className="flex items-center justify-center bg-teal-600 h-12">
         <h2 className="font-pacific text-2xl text-center">Employee MS</h2>{/* needs to adjust the font to that of google*/ }
       </div>

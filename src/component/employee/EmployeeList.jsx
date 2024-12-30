@@ -72,17 +72,17 @@ const EmployeeList = () => {
   return (
     <div className=" space-y-4 p-5">
       <div className="text-center">
-        <h3 className="text-2xl font-bold">Manage Employees</h3>
+        <h3 className="text-2xl font-bold text-center lg:text-left">Manage Employees</h3>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col space-y-4 lg:flex-row items-center justify-between">
         <input
           onChange={handleFilter}
           type="text"
           placeholder="Search By Employee's Name"
-          className="px-5 pt-0.5 h-10  border rounded text-white"
+          className="px-5 pt-0.5 h-10 w-full lg:w-auto  border rounded text-white"
         />
         <Link
-          className="px-4 py-1  bg-teal-600 font-bold rounded text-white"
+          className="px-4 py-2  bg-teal-600 text-center w-full lg:w-auto font-bold rounded text-white"
           to="/admin-dashboard/add-employee"
         >
           Add New Employee
