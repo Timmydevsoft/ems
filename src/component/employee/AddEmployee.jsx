@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
+import Loading from "../uiexperience/Loading";
 const AddEmployee = () => {
   const { auth } = useAuth();
   const navigate = useNavigate();
@@ -11,7 +11,16 @@ const AddEmployee = () => {
     description: "",
   });
 
+  const inputRef = useRef()
+  useEffect(
+    ()=>{
+      inputRef.current.focus()
+    },
+    []
+  )
+
   const [dep, setDep] = useState([]);
+  const[loading,setLoading]=useState(false)
   const [formD, setFormD] = useState({
     emp_name: "",
     mail: "",
@@ -59,6 +68,7 @@ const AddEmployee = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const formDataToSend = new FormData()
       
@@ -82,18 +92,18 @@ const AddEmployee = () => {
       );
       if (response.status == 201) {
         navigate("/admin-dashboard/employees");
-      } else {
-        console.log(response.status);
-      }
+        setLoading(false)
+      } 
     } catch (err) {
+      alert(err.message)
       console.log(err);
     }
   };
   return (
     <div className="max-w-4xl mx-auto  mt-10 bg-white p-8 rounded-md shadow-md">
-      <h3 className="text-2xl font-bold mb-6">Add Department</h3>
+      <h3 className="text-2xl font-bold mb-6">Add Employee</h3>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e)=>handleSubmit(e)}>
         <div className="grid grid-cold-1 md:grid-cols-2 gap-4">
           <div className="mt-4">
             <label
@@ -107,8 +117,9 @@ const AddEmployee = () => {
               name="emp_name"
               placeholder="Enter Name"
               onChange={handleChange}
+              ref={inputRef}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full border border-gray-300 focus:outline-teal-500 rounded-md"
             />
           </div>
 
@@ -125,7 +136,7 @@ const AddEmployee = () => {
               placeholder="johndoe@gmail.com"
               onChange={handleChange}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
           <div className="mt-4">
@@ -142,7 +153,7 @@ const AddEmployee = () => {
               placeholder="Enter emplyee Id"
               onChange={handleChange}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
           <div className="mt-4">
@@ -158,7 +169,7 @@ const AddEmployee = () => {
               name="date_of_birth"
               onChange={handleChange}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
 
@@ -171,7 +182,7 @@ const AddEmployee = () => {
             </label>
 
             <select
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 focus:outline-teal-500 w-full border border-gray-300 rounded-md"
               name="gender"
               required
               onChange={handleChange}
@@ -193,7 +204,7 @@ const AddEmployee = () => {
             </label>
 
             <select
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
               name="marital_status"
               onChange={handleChange}
               required
@@ -218,7 +229,7 @@ const AddEmployee = () => {
               placeholder="Designation"
               onChange={handleChange}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
 
@@ -231,7 +242,7 @@ const AddEmployee = () => {
               <span className="text-rose-500 font-bold text-xl">*</span>
             </label>
             <select
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
               name="department"
               required
               onChange={handleChange}
@@ -268,7 +279,7 @@ const AddEmployee = () => {
               placeholder="Salary"
               onChange={handleChange}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
           <div className="mt-4">
@@ -285,7 +296,7 @@ const AddEmployee = () => {
               placeholder="*****"
               onChange={handleChange}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
 
@@ -295,7 +306,7 @@ const AddEmployee = () => {
             </label>
 
             <select
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
               name="role"
               required
               onChange={handleChange}
@@ -321,12 +332,21 @@ const AddEmployee = () => {
               accept="image/*"
               onChange={handleChange}
               required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
-          <button className="w-full mt-6 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
-            Add Employee
-          </button>
+          <div className="w-full flex justify-center col-span-2 ">
+              {loading ? (
+                <Loading />
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full mt-6 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
+                >
+                   Add Employee
+                </button>
+              )}
+            </div>
         </div>
       </form>
     </div>
