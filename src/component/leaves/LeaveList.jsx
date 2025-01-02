@@ -41,12 +41,12 @@ const LeaveList = () => {
         />
         {auth.role === "Employee" && (
           <div className="flex lg:w-auto w-full justify-end">
-            <NavLink 
-            to="/employee-dashboard/add-leave"
-            className="px-4 font-semibold py-2 rounded bg-teal-600 text-white"
-          >
-            Add New Leave
-          </NavLink>
+            <NavLink
+              to="/employee-dashboard/add-leave"
+              className="px-4 font-semibold py-2 rounded bg-teal-600 text-white"
+            >
+              Add New Leave
+            </NavLink>
           </div>
         )}
       </div>
@@ -54,55 +54,57 @@ const LeaveList = () => {
       {/* Table starts here */}
 
       <div className="overflow-x-auto w-full">
-      {leaves.length > 0 ? (
-        <table className="w-full text-sm text-gray-500 text-left mt-6">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 border border-gray-200">
-            {[
-              "SNO",
-              "LEAVE TYPE",
-              "FROM",
-              "TO",
-              "DESCRIPTION",
-              "APPLIED DATE",
-              "STATUS",
-            ].map((item) => {
-              return (
-                <th key={item} className="px-6 py-3">
-                  {item}
-                </th>
-              );
-            })}
-          </thead>
-          <tbody>
-            {leaves.map((item) => {
-              return (
-                <tr
-                  key={item._id}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                >
-                  <td className="px-6 py-3">{s_no++}</td>
-                  <td className="px-6 py-3">{item.leaveType}</td>
-                  <td className="px-6 py-3">
-                    {new Date(item.startDate).toLocaleDateString()}
-                  </td>
-                  <td className="px-6 py-3">
-                    {new Date(item.endDate).toLocaleDateString()}
-                  </td>
-                  <td className="px-6 py-3">{item.reason}</td>
-                  <td className="px-6 py-3">
-                    {new Date(item.ApplieddAt).toLocaleDateString()}
-                  </td>
-                  <td className="px-6 py-3">{item.status}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      ) : (
-        <div className="w-full bg-white p-3 mt-6">
-          <p className="text-base font-semibold text-center">No records</p>
-        </div>
-      )}
+        {leaves.length > 0 ? (
+          <table className="w-full text-sm text-gray-500 text-left mt-6">
+            <tr>
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 border border-gray-200">
+                {[
+                  "SNO",
+                  "LEAVE TYPE",
+                  "FROM",
+                  "TO",
+                  "DESCRIPTION",
+                  "APPLIED DATE",
+                  "STATUS",
+                ].map((item) => {
+                  return (
+                    <th key={item} className="px-6 py-3">
+                      {item}
+                    </th>
+                  );
+                })}
+              </thead>
+            </tr>
+            <tbody>
+              {leaves.map((item) => {
+                return (
+                  <tr
+                    key={item._id}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  >
+                    <td className="px-6 py-3">{s_no++}</td>
+                    <td className="px-6 py-3">{item.leaveType}</td>
+                    <td className="px-6 py-3">
+                      {new Date(item.startDate).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-3">
+                      {new Date(item.endDate).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-3">{item.reason}</td>
+                    <td className="px-6 py-3">
+                      {new Date(item.ApplieddAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-3">{item.status}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <div className="w-full bg-white p-3 mt-6">
+            <p className="text-base font-semibold text-center">No records</p>
+          </div>
+        )}
       </div>
     </div>
   );
