@@ -37,7 +37,7 @@ const LeaveList = () => {
         <input
           type="text"
           placeholder="Search By Status"
-          className="px-4 py-2 font-semibold outline-teal-500 w-full border rounded  lg:w-auto"
+          className="px-4 py-1 font-semibold outline-teal-500 w-full border h-10 rounded  lg:w-auto"
         />
         {auth.role === "Employee" && (
           <div className="flex lg:w-auto w-full justify-end">
