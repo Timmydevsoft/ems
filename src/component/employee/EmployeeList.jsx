@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import DataTable from "react-data-table-component";
+import Loading from "../uiexperience/Loading";
 
 import { useState } from "react";
 import axios from "axios";
@@ -60,14 +61,18 @@ const EmployeeList = () => {
         setemployees(data);
         setLoading(false);
       } catch (err) {
+        alert(err.message)
         console.log(err);
       }
     };
     getEmployees();
   }, []);
-  // if(loading){
-  //     return(<div className="text-3xl text-teal-500 font-bold">Loading.....</div>)
-  // }
+  if(loading){
+      return(<div className="h-screen w-full flex flex-col items-center justify-center">
+        <p className="text-3xl text-teal-500 font-bold">Loading...</p>
+        <Loading/>
+      </div>)
+  }
 
   return (
     <div className=" space-y-4 p-5">
@@ -79,7 +84,7 @@ const EmployeeList = () => {
           onChange={handleFilter}
           type="text"
           placeholder="Search By Employee's Name"
-          className="px-5 pt-0.5 h-10 w-full lg:w-auto  border rounded text-white"
+          className="px-5 pt-0.5 h-10 w-full lg:w-auto focus:outline-teal-500 border rounded text-white"
         />
         <Link
           className="px-4 py-2  bg-teal-600 text-center w-full lg:w-auto font-bold rounded text-white"

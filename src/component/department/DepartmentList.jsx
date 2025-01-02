@@ -64,7 +64,7 @@ const DepartmentList = () => {
   }
 
   return (
-    <div className=" space-y-4 p-6">
+    <div className=" space-y-4 p-6 w-full overflow-x-hidden relative">
       <div className="text-center mb-5">
         <h3 className="text-2xl font-bold">Manage Departments</h3>
       </div>
@@ -73,19 +73,26 @@ const DepartmentList = () => {
           onChange={handleFilter}
           type="text"
           placeholder="Search By Dep Name"
-          className="px-5 pt-0.5 h-10  border rounded text-white w-full"
+          className="px-5 pt-0.5 h-10 focus:outline-teal-500 border rounded text-white w-full"
         />
         <div className="flex justify-end w-full">
-            <Link
-                className="px-4 py-2  bg-teal-600 text-center font-bold rounded text-white"
-                to="/admin-dashboard/add-department"
-            >
+          <Link
+            className="px-4 py-2  bg-teal-600 text-center font-bold rounded text-white"
+            to="/admin-dashboard/add-department"
+          >
             Add New Department
-            </Link>
+          </Link>
         </div>
       </div>
-      <div className="">
-        <DataTable data={departments} columns={columns} pagination />
+      <div className="w-full overflow-x-auto">
+        <div className="w-[760px] lg:w-full p6 bg-red md:w-full">
+          <DataTable 
+             data={departments} 
+             columns={columns} 
+             className="w-[370px] md:w-full lg:w-full"
+             pagination
+         />
+        </div>
       </div>
     </div>
   );
