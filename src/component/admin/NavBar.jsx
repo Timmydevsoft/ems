@@ -25,10 +25,10 @@ const NavBar = () => {
             }
         </button>
 
-        <div className="flex lg:hidden" onClick={()=>setShowLogout(prev=>!prev)}>
-          <span className={`w-4 h-1 bg-white transform translate-x-2  ${showLogout ? "-rotate-45" : "rotate-45"}`}></span>
-          <span className={`w-4 h-1 bg-white transform rotate-45 ${showLogout ? "rotate-45" : "-rotate-45"}`}></span>
-        </div>
+        <button className="flex lg:hidden border-none" onClick={()=>setShowLogout(prev=>!prev)}>
+          <span className={`w-4 h-1 bg-white transform translate-x-2  ${showLogout ? "rotate-45" : "-rotate-45"}`}></span>
+          <span className={`w-4 h-1 bg-white transform ${showLogout ? "-rotate-45" : "rotate-45"}`}></span>
+        </button>
 
         <div className={`absolute ${showLogout ? "block" : "hidden"} lg:hidden top-10 -right-4 lg:-top-4`} >
           <button

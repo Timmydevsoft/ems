@@ -29,19 +29,19 @@ const LeaveList = () => {
 
   let s_no = 1;
   return (
-    <div className="p-6">
+    <div className="p-6 overflow-x-hidden">
       <div className="text-center">
-        <h3 className="text-2xl font-bold">Manage Leaves</h3>
+        <h3 className="text-2xl font-bold mb-6">Manage Leaves</h3>
       </div>
-      <div className=" flex flex-col-reverse gap-3 lg:flex-row items-center lg:justify-between">
+      <div className="flex flex-col space-y-6 w-full md:flex-row lg:justify-between">
         <input
           type="text"
           placeholder="Search By Status"
-          className="px-4 py-2 font-semibold border rounded w-full lg:w-auto"
+          className="px-4 py-1 font-semibold outline-teal-500 w-full border h-10 rounded  lg:w-auto"
         />
         {auth.role === "Employee" && (
-          <div className="w-full flex justify-end lg:block">
-            <NavLink
+          <div className="flex lg:w-auto w-full justify-end">
+            <NavLink 
             to="/employee-dashboard/add-leave"
             className="px-4 font-semibold py-2 rounded bg-teal-600 text-white"
           >
@@ -53,6 +53,7 @@ const LeaveList = () => {
 
       {/* Table starts here */}
 
+      <div className="overflow-x-auto w-full">
       {leaves.length > 0 ? (
         <table className="w-full text-sm text-gray-500 text-left mt-6">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 border border-gray-200">
@@ -102,6 +103,7 @@ const LeaveList = () => {
           <p className="text-base font-semibold text-center">No records</p>
         </div>
       )}
+      </div>
     </div>
   );
 };

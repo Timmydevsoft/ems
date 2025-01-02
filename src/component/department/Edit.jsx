@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
-
+import Loading from "../uiexperience/Loading";
 const Edit = () => {
   const { auth } = useAuth()
   const navigate = useNavigate()
@@ -61,7 +61,12 @@ const Edit = () => {
 
   }
   if(loadind){
-    return(<p className="text-2xl text-teal-400 font-semibold">Loading...</p>)
+    return(
+      <div className="w-full h-screen flex items-center justify-center">
+        <p className="text-2xl text-teal-400 font-semibold">Loading...</p>
+        <Loading />
+      </div>
+    )
   }
 
   return (
@@ -84,7 +89,7 @@ const Edit = () => {
             onChange={handleChange}
             value={dep.dep_name}
             required
-            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            className="mt-1 p-2 w-full border border-gray-300 focus:outline-teal-500 rounded-md"
           />
         </div>
         <div className="mt-4">
@@ -93,7 +98,7 @@ const Edit = () => {
             htmlFor="description"
           >
             Add Description:{" "}
-            <span className="text-rose-500 font-bold text-xl">*</span>
+            <span className="text-rose-500 focus:outline-teal-500 font-bold text-xl">*</span>
           </label>
           <textarea
             name="description"

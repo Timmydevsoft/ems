@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import Loading from "../uiexperience/Loading";
 
 const View = () => {
   const { id } = useParams();
@@ -52,34 +53,38 @@ const View = () => {
             </div>
 
             <div className="">
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Name: </p>
                 <p className="font-medium">{employee.userId.name}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Employee Id: </p>
                 <p className="font-medium">{employee.employeeId}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">DOB: </p>
                 <p className="font-medium">{formatDate(employee.dob)}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Gender: </p>
                 <p className="font-medium">{employee.gender}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Department: </p>
                 <p className="font-medium">{employee.department.dep_name}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Martal Status: </p>
                 <p className="font-medium">{employee.maritalStatus}</p>
               </div>
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (<div className="h-[70vh] w-full flex flex-col items-center justify-center">
+        <p className="text-3xl text-teal-500 font-bold">Loading...</p>
+        <Loading/>
+      </div>)
+      }
     </div>
   );
 };

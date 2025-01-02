@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import ProgressBar from "../uiexperience/ProgressBar";
 const AdminLeaveView = () => {
@@ -50,8 +49,6 @@ const AdminLeaveView = () => {
       alert(err);
     }
   };
-
-  let s_no = 1;
   return (
     <>
       {leaves === null ? (
@@ -61,8 +58,8 @@ const AdminLeaveView = () => {
         </div>
       ) : (
         <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
-          <h3 className="text-2xl font-bold mb-10">Leave Details</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h3 className="text-center text-2xl font-bold mb-10">Leave Details</h3>
+          <div className="grid grid-cols-1 lg:flex lg:items-center lg:space-x-10 md:grid-cols-2 gap-6">
             <div>
               <img
                 src={`https://ems-api-3nt7.onrender.com/public/uploads/${leaves.employeeId.userId.profileImage}`}
@@ -71,44 +68,45 @@ const AdminLeaveView = () => {
               />
             </div>
             <div>
-              <div className="flex space-x-3">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Name: </p>
                 <p className="font-medium">{leaves.employeeId.userId.name}</p>
               </div>
-              {/* <div className="flex space-x-3 mb-5">
+              {/* <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                     <p className="text-lg font-bold">Employee Id: </p>
                     <p className="font-medium">{leaves.employeeId}</p>
                   </div> */}
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Leave Type: </p>
                 <p className="font-medium">{leaves.leaveType}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Reason: </p>
                 <p className="font-medium">{leaves.reason}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Department: </p>
                 <p className="font-medium">
                   {leaves.employeeId.department.dep_name}
                 </p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Employee Id: </p>
                 <p className="font-medium">{leaves.employeeId.employeeId}</p>
               </div>
 
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">Start Date: </p>
+                
                 <p className="font-medium">
                   {new Date(leaves.startDate).toLocaleDateString()}
                 </p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">End Date: </p>
                 <p className="font-medium">{new Date().toLocaleDateString()}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex space-x-3 mb-5 w-full justify-center lg:justify-start">
                 <p className="text-lg font-bold">
                   {leaves.status === "Pending" ? "Status" : "Action"}
                 </p>

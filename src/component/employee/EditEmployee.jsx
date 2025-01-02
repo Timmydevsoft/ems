@@ -1,12 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
-
+import Loading from "../uiexperience/Loading";
 const EditEmployee = () => {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [dep, setDep] = useState([]);
+  const[loading,setLoading]=useState({depLoading: true, empLoading: true})
   const [employeeDetails, setEmployeeDetails] = useState({
     emp_name: "",
     marital_status: "",
@@ -15,7 +16,7 @@ const EditEmployee = () => {
     department_name: "",
     salary: "",
   });
- 
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -38,8 +39,12 @@ const EditEmployee = () => {
             department_name: response.data.department.dep_name,
             salary: response.data.salary
           });
+          setLoading((prev)=>{
+            return({...prev, empLoading: !loading.empLoading})
+          })
         }
       } catch (err) {
+        alert(err.message)
         console.log(err);
       }
     };
@@ -62,6 +67,9 @@ const EditEmployee = () => {
           return { dep_name: item.dep_name, id: item._id };
         });
         setDep(depsData);
+        setLoading((prev)=>{
+          return({...prev, depLoading: !loading.depLoading})
+        })
       } catch (err) {
         console.log(err);
       }
@@ -106,6 +114,13 @@ const EditEmployee = () => {
       console.log(err);
     }
   };
+
+  if(loading.empLoading && loading.depLoading){
+    return(<div className="h-screen w-full flex flex-col items-center justify-center">
+      <p className="text-3xl text-teal-500 font-bold">Loading...</p>
+      <Loading/>
+    </div>)
+  }
   return (
     <>
       {employeeDetails !== null ? (
@@ -113,8 +128,8 @@ const EditEmployee = () => {
           <h3 className="text-2xl font-bold mb-6">Edit Employee</h3>
 
           <form onSubmit={handleSubmit}>
-            <div className="grid grid-cold-1 md:grid-cols-2 gap-4">
-              <div className="mt-4">
+            <div className="w-full flex flex-col items-ceter lg:grid lg:grid-cols-2 gap-4">
+              <div className="mt-4 w-full">
                 <label
                   className="text-sm font-medium text-gray-700"
                   htmlFor="dep_name"
@@ -129,7 +144,7 @@ const EditEmployee = () => {
                   value={employeeDetails.emp_name}
                   onChange={handleChange}
                   required
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 w-full border focus:outline-teal-500 border-gray-300 rounded-md"
                 />
               </div>
 
@@ -143,7 +158,7 @@ const EditEmployee = () => {
                 </label>
 
                 <select
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
                   name="marital_status"
                   value={employeeDetails.marital_status}
                   onChange={handleChange}
@@ -170,7 +185,7 @@ const EditEmployee = () => {
                   placeholder="Designation"
                   onChange={handleChange}
                   required
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
                 />
               </div>
 
@@ -189,7 +204,7 @@ const EditEmployee = () => {
                   placeholder="Salary"
                   onChange={handleChange}
                   required
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 w-full border border-gray-300 focus:outline-teal-500 rounded-md"
                 />
               </div>
 
@@ -202,7 +217,7 @@ const EditEmployee = () => {
                   <span className="text-rose-500 font-bold text-xl">*</span>
                 </label>
                 <select
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 w-full border border-gray-300 focus:outline-teal-500 rounded-md"
                   name="department_name"
                   value={employeeDetails. department_name}
                   required
@@ -227,7 +242,7 @@ const EditEmployee = () => {
                 </select>
               </div>
 
-              <button className="w-full mt-6 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
+              <button className="w-full  col-span-2 mt-6 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
                 Edit Employee Details
               </button>
             </div>
