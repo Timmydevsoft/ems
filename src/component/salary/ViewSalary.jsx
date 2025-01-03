@@ -23,8 +23,12 @@ const ViewSalary = () => {
           setSalaries(salaryResponse.data);
           setLoading(false);
         }
+        else if(salaryResponse.status === 200  || salaryResponse.data.length === 0 ){
+          setLoading(false)
+          setSalaries([])
+        }
       } catch (err) {
-        alert(err.message);
+        console.log(err)
       }
     };
     getSalary();
