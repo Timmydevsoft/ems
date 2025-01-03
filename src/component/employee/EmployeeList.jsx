@@ -49,7 +49,7 @@ const EmployeeList = () => {
               <div className=" bg-slate-400 w-20 h-20 rounded-full">
                 <img
                   className="h-full w-full rounded-full"
-                  src={`https://ems-api-3nt7.onrender.com/public/uploads/${item.userId.profileImage}`}
+                  src={`https://ems-api-3nt7.onrender.com/${item.userId.profileImage}`}
                 />
               </div>
             ),

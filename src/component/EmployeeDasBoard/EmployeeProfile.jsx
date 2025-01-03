@@ -56,7 +56,7 @@ const EmployeeProfile = () => {
             <div>
               <img
                 className="rounded-full border w-72 h-72"
-                src={`https://ems-api-3nt7.onrender.com/public/uploads/${employee.userId.profileImage}`}
+                src={`https://ems-api-3nt7.onrender.com/${employee.userId.profileImage}`}
                 alt=""
               />
             </div>

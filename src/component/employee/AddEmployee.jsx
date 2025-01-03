@@ -104,8 +104,8 @@ const AddEmployee = () => {
       <h3 className="text-2xl font-bold mb-6">Add Employee</h3>
 
       <form onSubmit={(e)=>handleSubmit(e)}>
-        <div className="grid grid-cold-1 md:grid-cols-2 gap-4">
-          <div className="mt-4">
+        <div className="flex flex-col items-center lg:grid lg:grid-cols-2 md:grid-cols-2 gap-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="dep_name"
@@ -123,7 +123,7 @@ const AddEmployee = () => {
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="dep_name"
@@ -139,7 +139,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="employee_id"
@@ -156,7 +156,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="date_of_birth"
@@ -173,7 +173,7 @@ const AddEmployee = () => {
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="gender"
@@ -194,7 +194,7 @@ const AddEmployee = () => {
             </select>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="marital_status"
@@ -215,7 +215,7 @@ const AddEmployee = () => {
             </select>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="designation"
@@ -233,7 +233,7 @@ const AddEmployee = () => {
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="department"
@@ -266,7 +266,7 @@ const AddEmployee = () => {
             </select>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="dep_name"
@@ -282,7 +282,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 w-full focus:outline-teal-500 border border-gray-300 rounded-md"
             />
           </div>
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="password"
@@ -300,7 +300,7 @@ const AddEmployee = () => {
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label className="text-sm font-medium text-gray-700" htmlFor="role">
               Role: <span className="text-rose-500 font-bold text-xl">*</span>
             </label>
@@ -317,7 +317,7 @@ const AddEmployee = () => {
             </select>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <label
               className="text-sm font-medium text-gray-700"
               htmlFor="image"
