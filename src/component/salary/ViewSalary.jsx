@@ -28,6 +28,7 @@ const ViewSalary = () => {
           setSalaries([])
         }
       } catch (err) {
+        alert(err)
         console.log(err)
       }
     };
